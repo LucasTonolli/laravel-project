@@ -16,17 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['namespace' => 'App\Http\Controllers\Site'], function(){
-    Route::get(uri:'/', action:HomeController::class);
+    Route::get(uri:'/', action:HomeController::class)->name('site.home');
 
-    Route::get('/produtos', 'CategoryController@index');
-    Route::get('/produtos/{slug}', 'CategoryController@show');
-    Route::get('/blog', BlogController::class);
+    Route::get('/produtos', 'CategoryController@index')->name('site.products');
+    Route::get('/produtos/{slug}', 'CategoryController@show')->name('site.product.category');
+    Route::get('/blog', BlogController::class)->name('site.blog');
 
     //Retoorna apenas uma view
-    Route::view('/sobre', 'site.sobre.index');
+    Route::view('/sobre', 'site.sobre.index')->name('site.about');
 
-    Route::get('/contato', 'ContactController@index');
-    Route::post('/contato', 'ContactController@sendContactForm');
+    Route::get('/contato', 'ContactController@index')->name('site.contact');
+    Route::post('/contato', 'ContactController@sendContactForm')->name('site.contact.form');
 });
 
 
