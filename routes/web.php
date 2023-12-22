@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'App\Http\Controllers\Site'], function(){
+    Route::get(uri:'/', action:HomeController::class);
+
+    Route::get('/produtos', 'CategoryController@index');
+    Route::get('/produtos/{slug}', 'CategoryController@show');
+    Route::get('/blog', BlogController::class);
+
+    //Retoorna apenas uma view
+    Route::view('/sobre', 'site.sobre.index');
+
+    Route::get('/contato', 'ContactController@index');
+    Route::post('/contato', 'ContactController@sendContactForm');
 });
+
+
+// Route::namespace('Site')->get('/', HomeController::class);
