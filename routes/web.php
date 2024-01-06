@@ -19,7 +19,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Site'], function(){
     Route::get(uri:'/', action:HomeController::class)->name('site.home');
 
     Route::get('/produtos', 'CategoryController@index')->name('site.products');
-    Route::get('/produtos/{slug}', 'CategoryController@show')->name('site.product.category');
+    Route::get('/produtos/{category}', 'CategoryController@show')->name('site.product.category');
     Route::get('/blog', BlogController::class)->name('site.blog');
 
     //Retoorna apenas uma view

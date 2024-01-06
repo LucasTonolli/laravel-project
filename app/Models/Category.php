@@ -19,7 +19,7 @@ class Category extends Model
         'deleted_at'
     ];
 
-    public function produts()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }
