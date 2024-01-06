@@ -13,7 +13,7 @@
 	<section class="products__cultivation__category main-wrapper">
 		@foreach ($categories as $category)
 		<article class="card__product">
-			<a href="{{route('site.product.category', ['category' => $category->id])}}">
+			<a href="{{route('site.product.category', ['category' => $category])}}">
 				<div class="card__cover">
 					<img src="{{ Vite::asset($category->image)}}">
 				</div>
